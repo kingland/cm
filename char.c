@@ -16,7 +16,7 @@
 #include "char.h"
 #include "utils.h"
 #include "memory.h"
-
+#include "header.h"
 #include "debug.h"
 
 CM_BEGIN_EXTERN
@@ -24,6 +24,24 @@ CM_BEGIN_EXTERN
 #define CM__ONES        (cast(usize)-1/U8_MAX)
 #define CM__HIGHS       (CM__ONES * (U8_MAX/2+1))
 #define CM__HAS_ZERO(x) ((x)-CM__ONES & ~(x) & CM__HIGHS)
+
+#if defined(CM_COMPILER_MSVC) && defined(_MSC_VER) && (_MSC_VER >= 1300)
+#define cm__p_stricmp    _stricmp
+#define cm__p_strnicmp   _strnicmp
+#define cm__p_strdup     _strdup
+#else
+#define cm__p_strdup     strdup
+#define cm__p_stricmp    stricmp
+#define cm__p_strnicmp   strnicmp
+#endif
+
+#ifdef CM_SYS_WINDOWS
+   #define cm__stricmp(a,b) cm__p_stricmp(a,b)
+   #define cm__strnicmp(a,b,n) cm__p_strnicmp(a,b,n)
+#else
+   #define cm__stricmp(a,b) strcasecmp(a,b) //strcasecmp, strncasecmp - case-insensitive string comparisons
+   #define cm__strnicmp(a,b,n) strncasecmp(a,b,n)
+#endif
 
 //
 // Char things
@@ -52,6 +70,13 @@ cm_char_is_space(char c) {
 	    c == '\f' ||
 	    c == '\v')
 	    return true;
+	return false;
+}
+
+cm_inline b32
+cm_char_is_newline(char c) {
+	if (c == '\n' || c == '\r')
+		return true;
 	return false;
 }
 
@@ -99,7 +124,6 @@ cm_hex_digit_to_int(char c) {
 		return c - 'A' + 10;
 	return -1;
 }
-
 
 cm_inline void 
 cm_str_to_lower(char *str) {
@@ -151,13 +175,17 @@ cm_strnlen(char const *str, isize max_len) {
 	return max_len;
 }
 
-
 cm_inline i32 
 cm_strcmp(char const *s1, char const *s2) {
 	while (*s1 && (*s1 == *s2)) {
 		s1++, s2++;
 	}
 	return *(u8 *)s1 - *(u8 *)s2;
+}
+
+cm_inline i32
+cm_stricmp(char const *s1, char const *s2){
+	return cm__stricmp(s1, s2);
 }
 
 cm_inline char *
@@ -221,10 +249,20 @@ cm_strrev(char *str) {
 	return str;
 }
 
+cm_inline char *
+cm_strsub(char const *s, isize n){
+	char *a;
+	isize z = cm_strlen(s);
+	if (z < n) n = z;
+	a = (char *) cm_malloc(n+1);	
+	cm_strncpy(a, s, n);
+	a[n] = 0;
+	return a;
+}
+
 cm_inline i32 
 cm_strncmp(char const *s1, char const *s2, isize len) {
-	for (; len > 0;
-	     s1++, s2++, len--) {
+	for (; len > 0;  s1++, s2++, len--) {
 		if (*s1 != *s2) {
 			return ((s1 < s2) ? -1 : +1);
 		} else if (*s1 == '\0') {
@@ -234,6 +272,10 @@ cm_strncmp(char const *s1, char const *s2, isize len) {
 	return 0;
 }
 
+cm_inline i32 
+cm_strnicmp(char const *s1, char const *s2, isize len) {
+	return cm__strnicmp(s1, s2, len);
+}
 
 cm_inline char const *
 cm_strtok(char *output, char const *src, char const *delimit) {
@@ -255,6 +297,17 @@ cm_str_has_prefix(char const *str, char const *prefix) {
 	return true;
 }
 
+cm_inline isize 
+cm_str_prefix_count(char const *str, char const *prefix){
+	isize c=0;
+   while (*prefix) {
+      if (*str++ != *prefix++)
+         break;
+      ++c;
+   }
+   return c;
+}
+
 cm_inline b32 
 cm_str_has_suffix(char const *str, char const *suffix) {
 	isize i = cm_strlen(str);
@@ -265,6 +318,15 @@ cm_str_has_suffix(char const *str, char const *suffix) {
 	return false;
 }
 
+cm_inline b32 
+cm_str_has_isuffix(char const *str, char const *suffix) {
+	isize i = cm_strlen(str);
+	isize j = cm_strlen(suffix);
+	if (j <= i) {
+		return cm_stricmp(str+i-j, suffix) == 0;
+	}
+	return false;
+}
 
 cm_inline char const *
 cm_char_first_occurence(char const *s, char c) {
@@ -276,7 +338,6 @@ cm_char_first_occurence(char const *s, char c) {
 	}
 	return s;
 }
-
 
 cm_inline char const *
 cm_char_last_occurence(char const *s, char c) {
@@ -301,7 +362,6 @@ cm_str_concat(char *dest, isize dest_len,
 		dest[src_a_len+src_b_len] = '\0';
 	}
 }
-
 
 cm_internal isize 
 cm__scan_i64(char const *text, i32 base, i64 *value) {
@@ -368,7 +428,6 @@ cm__scan_u64(char const *text, i32 base, u64 *value) {
 	if (value) *value = result;
 	return (text - text_begin);
 }
-
 
 // TODO(bill): Make better
 u64 
@@ -465,7 +524,6 @@ cm_str_to_f32(char const *str, char **end_ptr) {
 	f32 r = cast(f32)f;
 	return r;
 }
-
 
 
 cm_inline f64 

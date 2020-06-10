@@ -39,17 +39,16 @@
 #elif CM_SHARED_LIB_USE
 	#define CM_C_API CM_DLL_IMPORT
 #else
-	#define CM_C_API
+	#define CM_C_API extern
 #endif
 
 // NOTE(bill): Redefine for DLL, etc.
 #ifndef CM_DEF
-//	#ifdef CM_STATIC
-//		#define CM_DEF static
-//	#else
-		//#define CM_DEF extern
-//		#define CM_DEF CM_C_API
-//	#endif
+	//#ifdef CM_STATIC
+	//	#define CM_DEF static
+	//#else
+	//	#define CM_DEF extern		
+	//#endif
 	#define CM_DEF CM_C_API
 #endif
 

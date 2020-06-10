@@ -138,7 +138,7 @@ CM_DEF isize    cm_string_available_space(cmString const str);
 CM_DEF void     cm_string_clear          (cmString str);
 CM_DEF cmString cm_string_append         (cmString str, cmString const other);
 CM_DEF cmString cm_string_append_length  (cmString str, void const *other, isize num_bytes);
-CM_DEF cmString cm_string_appendc        (cmString str, char const *other);
+CM_DEF cmString cm_string_append_char    (cmString str, char const *other);
 CM_DEF cmString cm_string_append_rune    (cmString str, Rune r);
 CM_DEF cmString cm_string_append_fmt     (cmString str, char const *fmt, ...);
 CM_DEF cmString cm_string_set            (cmString str, char const *cstr);

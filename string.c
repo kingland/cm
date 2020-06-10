@@ -141,7 +141,7 @@ cm_string_append_length(cmString str, void const *other, isize other_len) {
 }
 
 cm_inline cmString 
-cm_string_appendc(cmString str, char const *other) {
+cm_string_append_char(cmString str, char const *other) {
 	return cm_string_append_length(str, other, cm_strlen(other));
 }
 

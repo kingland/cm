@@ -61,6 +61,27 @@ CM_STATIC_ASSERT(sizeof(u16) == 2);
 CM_STATIC_ASSERT(sizeof(u32) == 4);
 CM_STATIC_ASSERT(sizeof(u64) == 8);
 
+//NOTE: Predefine Pointer-Related Type
+//1. size_t 
+//	Provide safe type for sizes 
+//  The type size_t represents the maximum size any object can be in C. It puspose is to provide a portable means of 
+//	declaring a size consistent with addressable area of memory available on system.
+//	Usaully size_t can be used to store pointer , but it is not good idea to assume size_t it the same size as a pointer,
+//	intprt_t is better choice
+
+//2. ptrdiff_t 
+//	Handle pointer arithmetic
+//	The type ptrdiff_t is portable way to express the difference two pointer. The result of subtracing two pointer 
+//	returned as a ptrdiff_t type
+//	
+//3. (u)intprt_t 
+//	Storing pointer addresss
+//	The type (u)intptr_t used for storing pointer addresses. They provide a portable and safe way of declaring pointers
+//	char c;
+//	uintptr_t *pc = (uintptr_t *)&c;
+//	int n;
+//	intptr_t *pi = (intptr_t *)&n;
+
 typedef size_t    usize;
 typedef ptrdiff_t isize;
 
@@ -101,7 +122,6 @@ typedef i32 Rune; // NOTE(bill): Unicode codepoint
 #define CM_RUNE_MAX     cast(Rune)(0x0010ffff)
 #define CM_RUNE_BOM     cast(Rune)(0xfeff)
 #define CM_RUNE_EOF     cast(Rune)(-1)
-
 
 typedef i8  b8;
 typedef i16 b16;
