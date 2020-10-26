@@ -18,6 +18,8 @@
 
 #include "memory.h"
 
+CM_BEGIN_EXTERN
+
 //
 // File Handling
 //
@@ -162,5 +164,7 @@ CM_DEF b32         cm_path_is_root      (char const *path);
 CM_DEF char const *cm_path_base_name    (char const *path);
 CM_DEF char const *cm_path_extension    (char const *path);
 CM_DEF char *      cm_path_get_full_name(cmAllocator a, char const *path);
+
+CM_END_EXTERN
 
 #endif //CM_FILE_H

@@ -19,6 +19,8 @@
 #include "dll.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 #ifndef CM_DEBUG_TRAP
 	#if defined(_MSC_VER)
 	 	#if _MSC_VER < 1300
@@ -57,5 +59,7 @@
 #endif
 
 CM_DEF void cm_assert_handler(char const *prefix, char const *condition, char const *file, i32 line, char const *msg, ...);
+
+CM_END_EXTERN
 
 #endif //CM_DEBUG_H

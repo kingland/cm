@@ -20,34 +20,37 @@
 #include "types.h"
 #include "utils.h"
 
+
+CM_BEGIN_EXTERN
+
 //
 // Memory
 //
 
-CM_DEF b32         cm_is_power_of_two(isize x);
+CM_DEF b32         	cm_is_power_of_two(isize x);
 
-CM_DEF void *      cm_align_forward(void *ptr, isize alignment);
+CM_DEF void 		*cm_align_forward(void *ptr, isize alignment);
 
-CM_DEF void *      cm_pointer_add(void *ptr, isize bytes);
-CM_DEF void *      cm_pointer_sub(void *ptr, isize bytes);
-CM_DEF void const *cm_pointer_add_const(void const *ptr, isize bytes);
-CM_DEF void const *cm_pointer_sub_const(void const *ptr, isize bytes);
-CM_DEF isize       cm_pointer_diff(void const *begin, void const *end);
+CM_DEF void 		*cm_pointer_add(void *ptr, isize bytes);
+CM_DEF void 		*cm_pointer_sub(void *ptr, isize bytes);
+CM_DEF void const 	*cm_pointer_add_const(void const *ptr, isize bytes);
+CM_DEF void const 	*cm_pointer_sub_const(void const *ptr, isize bytes);
+CM_DEF isize       	cm_pointer_diff(void const *begin, void const *end);
 
-CM_DEF void        cm_zero_size(void *ptr, isize size);
+CM_DEF void        	cm_zero_size(void *ptr, isize size);
 
-#ifndef     cm_zero_item
-#define     cm_zero_item(t)         cm_zero_size((t), cm_size_of(*(t))) // NOTE(bill): Pass pointer of struct
-#define     cm_zero_array(a, count) cm_zero_size((a), cm_size_of(*(a))*count)
+#ifndef cm_zero_item
+#define cm_zero_item(t)         cm_zero_size((t), cm_size_of(*(t))) // NOTE(bill): Pass pointer of struct
+#define cm_zero_array(a, count) cm_zero_size((a), cm_size_of(*(a))*count)
 #endif
 
-CM_DEF void *      cm_memcopy   (void *dest, void const *source, isize size);
-CM_DEF void *      cm_memmove   (void *dest, void const *source, isize size);
-CM_DEF void *      cm_memset    (void *data, u8 byte_value, isize size);
-CM_DEF i32         cm_memcompare(void const *s1, void const *s2, isize size);
-CM_DEF void        cm_memswap   (void *i, void *j, isize size);
-CM_DEF void const *cm_memchr    (void const *data, u8 byte_value, isize size);
-CM_DEF void const *cm_memrchr   (void const *data, u8 byte_value, isize size);
+CM_DEF void 		*cm_memcopy   (void *dest, void const *source, isize size);
+CM_DEF void 		*cm_memmove   (void *dest, void const *source, isize size);
+CM_DEF void 		*cm_memset    (void *data, u8 byte_value, isize size);
+CM_DEF i32			cm_memcompare (void const *s1, void const *s2, isize size);
+CM_DEF void			cm_memswap    (void *i, void *j, isize size);
+CM_DEF void const 	*cm_memchr    (void const *data, u8 byte_value, isize size);
+CM_DEF void const 	*cm_memrchr   (void const *data, u8 byte_value, isize size);
 
 
 #ifndef cm_memcopy_array
@@ -117,18 +120,18 @@ typedef enum cmAllocatorFlag {
 #define CM_DEFAULT_ALLOCATOR_FLAGS (cmAllocatorFlag_ClearToZero)
 #endif
 
-CM_DEF void *cm_alloc_align (cmAllocator a, isize size, isize alignment);
-CM_DEF void *cm_alloc       (cmAllocator a, isize size);
-CM_DEF void  cm_free        (cmAllocator a, void *ptr);
-CM_DEF void  cm_free_all    (cmAllocator a);
-CM_DEF void *cm_resize      (cmAllocator a, void *ptr, isize old_size, isize new_size);
-CM_DEF void *cm_resize_align(cmAllocator a, void *ptr, isize old_size, isize new_size, isize alignment);
+CM_DEF void 		*cm_alloc_align	(cmAllocator a, isize size, isize alignment);
+CM_DEF void 		*cm_alloc       (cmAllocator a, isize size);
+CM_DEF void  		cm_free        	(cmAllocator a, void *ptr);
+CM_DEF void  		cm_free_all    	(cmAllocator a);
+CM_DEF void 		*cm_resize      (cmAllocator a, void *ptr, isize old_size, isize new_size);
+CM_DEF void 		*cm_resize_align(cmAllocator a, void *ptr, isize old_size, isize new_size, isize alignment);
 // TODO(bill): For gb_resize, should the use need to pass the old_size or only the new_size?
 
-CM_DEF void *cm_alloc_copy      (cmAllocator a, void const *src, isize size);
-CM_DEF void *cm_alloc_copy_align(cmAllocator a, void const *src, isize size, isize alignment);
-CM_DEF char *cm_alloc_str       (cmAllocator a, char const *str);
-CM_DEF char *cm_alloc_str_len   (cmAllocator a, char const *str, isize len);
+CM_DEF void 		*cm_alloc_copy      (cmAllocator a, void const *src, isize size);
+CM_DEF void 		*cm_alloc_copy_align(cmAllocator a, void const *src, isize size, isize alignment);
+CM_DEF char 		*cm_alloc_str       (cmAllocator a, char const *str);
+CM_DEF char 		*cm_alloc_str_len   (cmAllocator a, char const *str, isize len);
 
 
 // NOTE(bill): These are very useful and the type cast has saved me from numerous bugs
@@ -138,7 +141,7 @@ CM_DEF char *cm_alloc_str_len   (cmAllocator a, char const *str, isize len);
 #endif
 
 // NOTE(bill): Use this if you don't need a "fancy" resize allocation
-CM_DEF void *gb_default_resize_align(cmAllocator a, void *ptr, isize old_size, isize new_size, isize alignment);
+CM_DEF void *cm_default_resize_align(cmAllocator a, void *ptr, isize old_size, isize new_size, isize alignment);
 
 
 
@@ -169,21 +172,19 @@ typedef struct cmArena {
 	isize       temp_count;
 } cmArena;
 
-CM_DEF void cm_arena_init_from_memory   (cmArena *arena, void *start, isize size);
-CM_DEF void cm_arena_init_from_allocator(cmArena *arena, cmAllocator backing, isize size);
-CM_DEF void cm_arena_init_sub           (cmArena *arena, cmArena *parent_arena, isize size);
-CM_DEF void cm_arena_free               (cmArena *arena);
+CM_DEF void 			cm_arena_init_from_memory   (cmArena *arena, void *start, isize size);
+CM_DEF void 			cm_arena_init_from_allocator(cmArena *arena, cmAllocator backing, isize size);
+CM_DEF void 			cm_arena_init_sub           (cmArena *arena, cmArena *parent_arena, isize size);
+CM_DEF void 			cm_arena_free               (cmArena *arena);
 
-CM_DEF isize cm_arena_alignment_of  (cmArena *arena, isize alignment);
-CM_DEF isize cm_arena_size_remaining(cmArena *arena, isize alignment);
-CM_DEF void  cm_arena_check         (cmArena *arena);
+CM_DEF isize 			cm_arena_alignment_of  (cmArena *arena, isize alignment);
+CM_DEF isize 			cm_arena_size_remaining(cmArena *arena, isize alignment);
+CM_DEF void  			cm_arena_check         (cmArena *arena);
 
 
 // Allocation Types: alloc, free_all, resize
-CM_DEF cmAllocator cm_arena_allocator(cmArena *arena);
+CM_DEF cmAllocator 		cm_arena_allocator(cmArena *arena);
 CM_DEF CM_ALLOCATOR_PROC(cm_arena_allocator_proc);
-
-
 
 typedef struct cmTempArenaMemory {
 	cmArena *arena;
@@ -209,9 +210,9 @@ typedef struct cmPool {
 	isize       total_size;
 } cmPool;
 
-CM_DEF void cm_pool_init      (cmPool *pool, cmAllocator backing, isize num_blocks, isize block_size);
-CM_DEF void cm_pool_init_align(cmPool *pool, cmAllocator backing, isize num_blocks, isize block_size, isize block_align);
-CM_DEF void cm_pool_free      (cmPool *pool);
+CM_DEF void 			cm_pool_init      (cmPool *pool, cmAllocator backing, isize num_blocks, isize block_size);
+CM_DEF void 			cm_pool_init_align(cmPool *pool, cmAllocator backing, isize num_blocks, isize block_size, isize block_align);
+CM_DEF void 			cm_pool_free      (cmPool *pool);
 
 // Allocation Types: alloc, free
 CM_DEF cmAllocator cm_pool_allocator(cmPool *pool);
@@ -262,11 +263,11 @@ typedef struct cmFreeList {
 	isize            allocation_count;
 } cmFreeList;
 
-CM_DEF void cm_free_list_init               (cmFreeList *fl, void *start, isize size);
-CM_DEF void cm_free_list_init_from_allocator(cmFreeList *fl, cmAllocator backing, isize size);
+CM_DEF void 			cm_free_list_init               (cmFreeList *fl, void *start, isize size);
+CM_DEF void 			cm_free_list_init_from_allocator(cmFreeList *fl, cmAllocator backing, isize size);
 
 // Allocation Types: alloc, free, free_all, resize
-CM_DEF cmAllocator cm_free_list_allocator(cmFreeList *fl);
+CM_DEF cmAllocator 		cm_free_list_allocator(cmFreeList *fl);
 CM_DEF CM_ALLOCATOR_PROC(cm_free_list_allocator_proc);
 
 
@@ -283,16 +284,18 @@ typedef struct cmScratchMemory {
 	void *free_point;
 } cmScratchMemory;
 
-CM_DEF void cm_scratch_memory_init     (cmScratchMemory *s, void *start, isize size);
-CM_DEF b32  cm_scratch_memory_is_in_use(cmScratchMemory *s, void *ptr);
+CM_DEF void 			cm_scratch_memory_init     (cmScratchMemory *s, void *start, isize size);
+CM_DEF b32  			cm_scratch_memory_is_in_use(cmScratchMemory *s, void *ptr);
 
 
 // Allocation Types: alloc, free, free_all, resize
-CM_DEF cmAllocator cm_scratch_allocator(cmScratchMemory *s);
+CM_DEF cmAllocator 		cm_scratch_allocator(cmScratchMemory *s);
 CM_DEF CM_ALLOCATOR_PROC(cm_scratch_allocator_proc);
 
 // TODO(bill): Stack allocator
 // TODO(bill): Fixed heap allocator
 // TODO(bill): General heap allocator. Maybe a TCMalloc like clone?
+
+CM_END_EXTERN
 
 #endif //CM_MEMORY_H

@@ -23,6 +23,8 @@
 #include "mutex.h"
 #include "pragma.h"
 
+CM_BEGIN_EXTERN
+
 #define CM_THREAD_PROC(name) isize name(struct cmThread *thread)
 typedef CM_THREAD_PROC(cmThreadProc);
 
@@ -71,5 +73,8 @@ CM_DEF void cm_sync_set_target    (cmSync *s, i32 count);
 CM_DEF void cm_sync_release       (cmSync *s);
 CM_DEF i32  cm_sync_reach         (cmSync *s);
 CM_DEF void cm_sync_reach_and_wait(cmSync *s);
+
+
+CM_END_EXTERN
 
 #endif //CM_THREAD_H

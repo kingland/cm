@@ -18,6 +18,8 @@
 
 #include "memory.h"
 
+CM_BEGIN_EXTERN
+
 /////////////////////////////////////////////////////////////////////////////////
 //
 // Platform Stuff
@@ -388,5 +390,7 @@ CM_DEF void  cm_platform_show_window                (cmPlatform *p);
 CM_DEF void  cm_platform_hide_window                (cmPlatform *p);
 
 #endif // GB_PLATFORM
+
+CM_END_EXTERN
 
 #endif //CM_PLATFORM_H

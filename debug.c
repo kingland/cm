@@ -17,8 +17,6 @@
 #include "header.h"
 #include "print.h"
 
-CM_BEGIN_EXTERN
-
 void 
 cm_assert_handler(char const *prefix, char const *condition, char const *file, i32 line, char const *msg, ...) {
 	cm_printf_err("%s(%d): %s: ", file, line, prefix);
@@ -32,5 +30,3 @@ cm_assert_handler(char const *prefix, char const *condition, char const *file, i
 	}
 	cm_printf_err("\n");
 }
-
-CM_END_EXTERN

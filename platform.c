@@ -16,8 +16,6 @@
 #include "platform.h"
 #include "header.h"
 
-CM_BEGIN_EXTERN
-
 #if defined(CM_PLATFORM)
 
 cm_inline void 
@@ -1835,5 +1833,3 @@ CM_COMPARE_PROC(cm_video_mode_dsc_cmp) {
 }
 
 #endif // CM_PLATFORM
-
-CM_END_EXTERN

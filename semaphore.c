@@ -17,7 +17,6 @@
 #include "utils.h"
 #include "header.h"
 
-CM_BEGIN_EXTERN
 
 cm_inline void 
 cm_semaphore_release(cmSemaphore *s) { cm_semaphore_post(s, 1); }
@@ -90,5 +89,3 @@ cm_semaphore_release(cmSemaphore *s) { cm_semaphore_post(s, 1); }
 #else
 #error
 #endif
-
-CM_END_EXTERN

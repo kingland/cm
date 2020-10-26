@@ -21,8 +21,6 @@
 #include "utf8.h"
 #include "print.h"
 
-CM_BEGIN_EXTERN
-
 cm_inline void 
 cm__set_string_length  (cmString str, isize len) { CM_STRING_HEADER(str)->length = len; }
 
@@ -266,5 +264,3 @@ cm_string_trim(cmString str, char const *cut_set) {
 
 cm_inline cmString 
 cm_string_trim_space(cmString str) { return cm_string_trim(str, " \t\r\n\v\f"); }
-
-CM_END_EXTERN

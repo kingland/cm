@@ -18,7 +18,17 @@
 #include "utils.h"
 #include "header.h"
 
-CM_BEGIN_EXTERN
+/////////////////////////////////////////////////////////////////////////////////
+//
+//	https://en.wikipedia.org/wiki/Memory_barrier
+//
+//	A memory barrier, also known as a membar, memory fence or fence instruction, 
+//	is a type of barrier instruction that causes a central processing unit (CPU) 
+//	or compiler to enforce an ordering constraint on memory operations issued before and after the barrier instruction. 
+//	This typically means that operations issued prior to the barrier are guaranteed 
+//	to be performed before operations issued after the barrier.
+//
+/////////////////////////////////////////////////////////////////////////////////
 
 cm_inline void 
 cm_yield_thread(void) {
@@ -71,5 +81,3 @@ cm_lfence(void) {
 #error Unknown architecture
 #endif
 }
-
-CM_END_EXTERN

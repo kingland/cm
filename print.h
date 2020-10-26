@@ -20,6 +20,8 @@
 #include "file.h"
 #include "header.h"
 
+CM_BEGIN_EXTERN
+
 //////////////////////////////////////////////////////////////////////////////////
 //
 // Printing
@@ -37,5 +39,7 @@ CM_DEF char *cm_bprintf    (char const *fmt, ...) CM_PRINTF_ARGS(1); // NOTE(bil
 CM_DEF char *cm_bprintf_va (char const *fmt, va_list va);            // NOTE(bill): A locally persisting buffer is used internally
 CM_DEF isize cm_snprintf   (char *str, isize n, char const *fmt, ...) CM_PRINTF_ARGS(3);
 CM_DEF isize cm_snprintf_va(char *str, isize n, char const *fmt, va_list va);
+
+CM_END_EXTERN
 
 #endif //CM_PRINT_H

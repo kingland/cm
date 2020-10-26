@@ -19,6 +19,8 @@
 #include "dll.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 CM_DEF void cm_exit     (u32 code);
 CM_DEF void cm_yield    (void);
 CM_DEF void cm_set_env  (char const *name, char const *value);
@@ -29,5 +31,7 @@ CM_DEF u32 cm_endian_swap32(u32 i);
 CM_DEF u64 cm_endian_swap64(u64 i);
 
 CM_DEF isize cm_count_set_bits(u64 mask);
+
+CM_END_EXTERN
 
 #endif

@@ -17,8 +17,6 @@
 #include "utils.h"
 #include "header.h"
 
-CM_BEGIN_EXTERN
-
 cm_inline void 
 cm_mutex_init(cmMutex *m) {
 #if defined(CM_SYS_WINDOWS)
@@ -66,5 +64,4 @@ cm_mutex_unlock(cmMutex *m) {
 #endif
 }
 
-CM_END_EXTERN
 

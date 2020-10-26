@@ -19,6 +19,8 @@
 #include "dll.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 ////////////////////////////////////////////////////////////////
 //
 // Miscellany
@@ -39,5 +41,7 @@ CM_DEF isize cm_random_gen_isize     (cmRandom *r);
 CM_DEF i64   cm_random_range_i64     (cmRandom *r, i64 lower_inc, i64 higher_inc);
 CM_DEF isize cm_random_range_isize   (cmRandom *r, isize lower_inc, isize higher_inc);
 CM_DEF f64   cm_random_range_f64     (cmRandom *r, f64 lower_inc, f64 higher_inc);
+
+CM_END_EXTERN
 
 #endif //CM_RANDOM_H

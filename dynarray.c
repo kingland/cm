@@ -15,8 +15,6 @@
 
 #include "dynarray.h"
 
-CM_BEGIN_EXTERN
-
 cm_no_inline void *
 cm__array_set_capacity(void *array, isize capacity, isize element_size) {
 
@@ -48,5 +46,3 @@ cm__array_set_capacity(void *array, isize capacity, isize element_size) {
 		return nh+1;
 	}
 }
-
-CM_END_EXTERN

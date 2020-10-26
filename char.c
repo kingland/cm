@@ -19,8 +19,6 @@
 #include "header.h"
 #include "debug.h"
 
-CM_BEGIN_EXTERN
-
 #define CM__ONES        (cast(usize)-1/U8_MAX)
 #define CM__HIGHS       (CM__ONES * (U8_MAX/2+1))
 #define CM__HAS_ZERO(x) ((x)-CM__ONES & ~(x) & CM__HIGHS)
@@ -586,5 +584,3 @@ cm_str_to_f64(char const *str, char **end_ptr) {
 
 	return result;
 }
-
-CM_END_EXTERN

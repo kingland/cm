@@ -19,6 +19,7 @@
 #include "memory.h"
 #include "dynarray.h"
 
+CM_BEGIN_EXTERN
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -170,5 +171,7 @@ void CM_JOIN2(FUNC,set)(NAME *h, u64 key, VALUE value) { \
 	if (CM_JOIN2(FUNC,_full)(h)) \
 		CM_JOIN2(FUNC,grow)(h); \
 } \
+
+CM_END_EXTERN
 
 #endif

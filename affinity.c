@@ -20,8 +20,6 @@
 
 #include "debug.h"
 
-CM_BEGIN_EXTERN
-
 #if defined(CM_SYS_WINDOWS)
 void 
 cm_affinity_init(cmAffinity *a) {
@@ -250,5 +248,3 @@ cm_affinity_thread_count_for_core(cmAffinity *a, isize core) {
 #else
 #error TODO(bill): Unknown system
 #endif
-
-CM_END_EXTERN

@@ -18,8 +18,6 @@
 #include "random.h"
 #include "char.h"
 
-CM_BEGIN_EXTERN
-
 /*
 //
 // Sorting
@@ -214,5 +212,3 @@ cm_reverse(void *base, isize count, isize size) {
 		cm_memswap(cast(u8 *)base + i*size, cast(u8 *)base + j*size, size);
 	}
 }
-
-CM_END_EXTERN

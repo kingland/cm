@@ -20,6 +20,8 @@
 #include "types.h"
 #include "header.h"
 
+CM_BEGIN_EXTERN
+
 typedef struct cmMutex {
 #if defined(CM_SYS_WINDOWS)
 	CRITICAL_SECTION win32_critical_section;
@@ -47,5 +49,7 @@ cm_mutex_init(&m);
 	// Do whatever as the mutex is now scoped based!
 }
 #endif
+
+CM_END_EXTERN
 
 #endif //CM_MUTEX_H

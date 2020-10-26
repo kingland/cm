@@ -20,6 +20,8 @@
 #include "types.h"
 #include "memory.h"
 
+CM_BEGIN_EXTERN
+
 /////////////////////////////////////////////////////////////////////////////////
 //
 // cmString - C Read-Only-Compatible
@@ -147,5 +149,7 @@ CM_DEF isize    cm_string_allocation_size(cmString const str);
 CM_DEF b32      cm_string_are_equal      (cmString const lhs, cmString const rhs);
 CM_DEF cmString cm_string_trim           (cmString str, char const *cut_set);
 CM_DEF cmString cm_string_trim_space     (cmString str); // Whitespace ` \t\r\n\v\f`
+
+CM_END_EXTERN
 
 #endif //CM_STRING_H

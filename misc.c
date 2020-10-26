@@ -17,8 +17,6 @@
 #include "utils.h"
 #include "header.h"
 
-CM_BEGIN_EXTERN
-
 #if defined(CM_SYS_WINDOWS)
 cm_inline void cm_exit(u32 code) { ExitProcess(code); }
 #else

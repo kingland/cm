@@ -18,7 +18,6 @@
 #include "header.h"
 #include "utils.h"
 
-CM_BEGIN_EXTERN
 
 #if defined(CM_SYS_WINDOWS)
 
@@ -56,5 +55,3 @@ cm_dll_proc_address(cmDllHandle dll, char const *proc_name) {
 }
 
 #endif
-
-CM_END_EXTERN

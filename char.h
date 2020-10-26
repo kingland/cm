@@ -19,6 +19,8 @@
 #include "dll.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 //
 // Char Functions
 //
@@ -70,5 +72,7 @@ CM_DEF f32  cm_str_to_f32(char const *str, char **end_ptr);
 CM_DEF f64  cm_str_to_f64(char const *str, char **end_ptr);
 CM_DEF void cm_i64_to_str(i64 value, char *string, i32 base);
 CM_DEF void cm_u64_to_str(u64 value, char *string, i32 base);
+
+CM_END_EXTERN
 
 #endif //CM_CHAR_H

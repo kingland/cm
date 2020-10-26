@@ -17,8 +17,6 @@
 #include "fences.h"
 #include "utils.h"
 
-CM_BEGIN_EXTERN
-
 //
 // Concurrency
 //
@@ -558,5 +556,3 @@ cm_atomic_ptr_try_acquire_lock(cmAtomicPtr volatile *a) {
 	return cm_atomic64_try_acquire_lock(cast(cmAtomic64 volatile *)a);
 }
 #endif
-
-CM_END_EXTERN

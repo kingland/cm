@@ -20,6 +20,8 @@
 #include "arch.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 // TODO(bill): Be specific with memory order?
 // e.g. relaxed, acquire, release, acquire_release
 
@@ -74,5 +76,7 @@ CM_DEF void *cm_atomic_ptr_fetch_or        (cmAtomicPtr volatile *a, void *opera
 CM_DEF b32   cm_atomic_ptr_spin_lock       (cmAtomicPtr volatile *a, isize time_out); // NOTE(bill): time_out = -1 as default
 CM_DEF void  cm_atomic_ptr_spin_unlock     (cmAtomicPtr volatile *a);
 CM_DEF b32   cm_atomic_ptr_try_acquire_lock(cmAtomicPtr volatile *a);
+
+CM_END_EXTERN
 
 #endif //CM_ATOMICS_H

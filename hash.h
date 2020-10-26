@@ -19,6 +19,8 @@
 #include "dll.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 //
 // Hashing and Checksum Functions
 //
@@ -40,5 +42,7 @@ CM_EXTERN u64 cm_murmur64(void const *data, isize len);
 
 CM_EXTERN u32 cm_murmur32_seed(void const *data, isize len, u32 seed);
 CM_EXTERN u64 cm_murmur64_seed(void const *data, isize len, u64 seed);
+
+CM_END_EXTERN
 
 #endif

@@ -61,14 +61,18 @@ CM_STATIC_ASSERT(sizeof(u16) == 2);
 CM_STATIC_ASSERT(sizeof(u32) == 4);
 CM_STATIC_ASSERT(sizeof(u64) == 8);
 
-//NOTE: Predefine Pointer-Related Type
+/////////////////////////////////////////////////////////////////////////////////
+//
+//	NOTE: Predefine Pointer-Related Type
+//
+/////////////////////////////////////////////////////////////////////////////////
 //1. size_t 
 //	Provide safe type for sizes 
 //  The type size_t represents the maximum size any object can be in C. It puspose is to provide a portable means of 
 //	declaring a size consistent with addressable area of memory available on system.
 //	Usaully size_t can be used to store pointer , but it is not good idea to assume size_t it the same size as a pointer,
 //	intprt_t is better choice
-
+//
 //2. ptrdiff_t 
 //	Handle pointer arithmetic
 //	The type ptrdiff_t is portable way to express the difference two pointer. The result of subtracing two pointer 
@@ -81,6 +85,8 @@ CM_STATIC_ASSERT(sizeof(u64) == 8);
 //	uintptr_t *pc = (uintptr_t *)&c;
 //	int n;
 //	intptr_t *pi = (intptr_t *)&n;
+//
+/////////////////////////////////////////////////////////////////////////////////
 
 typedef size_t    usize;
 typedef ptrdiff_t isize;
@@ -117,15 +123,47 @@ typedef double f64;
 CM_STATIC_ASSERT(sizeof(f32) == 4);
 CM_STATIC_ASSERT(sizeof(f64) == 8);
 
-typedef i32 Rune; // NOTE(bill): Unicode codepoint
+// NOTE(bill): Unicode codepoint
+typedef u32 Rune; 
 #define CM_RUNE_INVALID cast(Rune)(0xfffd)
 #define CM_RUNE_MAX     cast(Rune)(0x0010ffff)
 #define CM_RUNE_BOM     cast(Rune)(0xfeff)
 #define CM_RUNE_EOF     cast(Rune)(-1)
 
+// NOTE(bill): Prefer this!!!
 typedef i8  b8;
 typedef i16 b16;
-typedef i32 b32; // NOTE(bill): Prefer this!!!
+typedef i32 b32; 
+
+#if defined(CM_ARCH_64)
+#define CM_LONG_LONG 1
+#endif
+
+#if defined(CM_LONG_LONG)
+typedef long long ill;
+typedef unsigned long long  ull;
+typedef long double fld;
+#else
+typedef long ill;
+typedef unsigned long ull;
+typedef double fld;
+#endif
+
+#if defined(CM_ARCH_64) && defined(CM_OS_WINDOWS)
+CM_STATIC_ASSERT(sizeof(f64) == sizeof(fld));
+#endif
+
+typedef signed char ibyte;
+typedef unsigned char ubyte;
+typedef signed long il;
+typedef unsigned long ul;
+
+/*#ifndef CM_ENDIAN_ORDER
+#define CM_ENDIAN_ORDER
+	// TODO(bill): Is the a good way or is it better to test for certain compilers and macros?
+	#define CM_BIG_ENDIAN    (!*(u8*)&(u16){1})
+	#define CM_LITTLE_ENDIAN (!CM_BIG_ENDIAN)
+#endif*/
 
 // NOTE(bill): Get true and false
 #if !defined(__cplusplus)
@@ -165,16 +203,16 @@ typedef i32 b32; // NOTE(bill): Prefer this!!!
 #define I64_MAX 0x7fffffffffffffffll
 
 #if defined(CM_ARCH_32)
-	#define USIZE_MIX U32_MIN
+	#define USIZE_MIN U32_MIN
 	#define USIZE_MAX U32_MAX
 
-	#define ISIZE_MIX S32_MIN
+	#define ISIZE_MIN S32_MIN
 	#define ISIZE_MAX S32_MAX
 #elif defined(CM_ARCH_64)
-	#define USIZE_MIX U64_MIN
+	#define USIZE_MIN U64_MIN
 	#define USIZE_MAX U64_MAX
 
-	#define ISIZE_MIX I64_MIN
+	#define ISIZE_MIN I64_MIN
 	#define ISIZE_MAX I64_MAX
 #else
 	#error Unknown architecture size. This library only supports 32 bit and 64 bit architectures.

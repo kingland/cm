@@ -21,6 +21,8 @@
 #include "types.h"
 #include "utils.h"
 
+CM_BEGIN_EXTERN
+
 #if defined(CM_SYS_WINDOWS)
 typedef struct cmAffinity {
 	b32   is_accurate;
@@ -53,5 +55,7 @@ CM_DEF void  cm_affinity_init                 (cmAffinity *a);
 CM_DEF void  cm_affinity_destroy              (cmAffinity *a);
 CM_DEF b32   cm_affinity_set                  (cmAffinity *a, isize core, isize thread);
 CM_DEF isize cm_affinity_thread_count_for_core(cmAffinity *a, isize core);
+
+CM_END_EXTERN
 
 #endif //CM_AFFINITY_H

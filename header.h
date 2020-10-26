@@ -55,6 +55,9 @@
 
 	#include <malloc.h> // NOTE(bill): _aligned_*()
 	#include <intrin.h>
+	#include <float.h>
+	#include <limits.h>
+	#include <complex.h>
 #else
 	#include <dlfcn.h>
 	#include <errno.h>

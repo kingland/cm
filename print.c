@@ -17,8 +17,6 @@
 #include "utils.h"
 #include "char.h"
 
-CM_BEGIN_EXTERN
-
 ////////////////////////////////////////////////////////////////
 //
 // Printing
@@ -491,5 +489,3 @@ cm_snprintf_va(char *text, isize max_len, char const *fmt, va_list va) {
 	res = (text - text_begin);
 	return (res >= max_len || res < 0) ? -1 : res;
 }
-
-CM_END_EXTERN

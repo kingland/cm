@@ -19,6 +19,7 @@
 #include "memory.h"
 #include "debug.h"
 
+CM_BEGIN_EXTERN
 /*
 // Fixed Capacity Buffer (POD Types)
 //
@@ -60,5 +61,7 @@ typedef struct cmBufferHeader {
 
 #define cm_buffer_pop(x)   do { CM_ASSERT(cm_buffer_count(x) > 0); cm_buffer_count(x)--; } while (0)
 #define cm_buffer_clear(x) do { cm_buffer_count(x) = 0; } while (0)
+
+CM_END_EXTERN
 
 #endif //CM_BUFFER_H

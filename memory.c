@@ -20,7 +20,7 @@
 #include "char.h"
 #include "print.h"
 
-CM_BEGIN_EXTERN
+
 
 b32 
 cm_is_power_of_two(isize x) {
@@ -445,8 +445,6 @@ cm_memrchr(void const *data, u8 c, isize n) {
 	}
 	return NULL;
 }
-
-
 
 cm_inline void *
 cm_alloc_align (cmAllocator a, isize size, isize alignment){ 
@@ -1220,6 +1218,3 @@ CM_ALLOCATOR_PROC(cm_scratch_allocator_proc) {
 
 	return ptr;
 }
-
-
-CM_END_EXTERN

@@ -24,9 +24,10 @@
 
 #if defined(_MSC_VER)
 #pragma warning(push)
-#pragma warning(disable:4201)
-#pragma warning(disable:4127) // Conditional expression is constant
+#pragma warning(disable:4067) // Unexpected tokens following preprocessor directive
 #pragma warning(disable:4115)
+#pragma warning(disable:4127) // Conditional expression is constant
+#pragma warning(disable:4201)
 #endif
 
 #endif

@@ -16,8 +16,6 @@
 #include "hash.h"
 #include "utils.h"
 
-CM_BEGIN_EXTERN
-
 u32 
 cm_adler32(void const *data, isize len) {
 	u32 const MOD_ALDER = 65521;

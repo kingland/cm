@@ -16,7 +16,10 @@
 #ifndef CM_DLL_H
 #define CM_DLL_H
 
+#include "arch.h"
 #include "extern.h"
+
+CM_BEGIN_EXTERN
 
 #if defined(_WIN32)
 	#define CM_DLL_EXPORT CM_EXTERN __declspec(dllexport)
@@ -42,6 +45,14 @@
 	#define CM_C_API extern
 #endif
 
+#if defined(CM_OS_WINDOWS)
+#define CM_DLL_EXT ".dll"
+#elif defined(CM_OS_OSX)
+#define CM_DLL_EXT ".dylib"
+#else defined(CM_OS_UNIX)
+#define CM_DLL_EXT ".so"
+#endif
+
 // NOTE(bill): Redefine for DLL, etc.
 #ifndef CM_DEF
 	//#ifdef CM_STATIC
@@ -62,5 +73,7 @@ typedef void (*cmDllProc)(void);
 CM_DEF cmDllHandle cm_dll_load        (char const *filepath);
 CM_DEF void        cm_dll_unload      (cmDllHandle dll);
 CM_DEF cmDllProc   cm_dll_proc_address(cmDllHandle dll, char const *proc_name);
+
+CM_END_EXTERN
 
 #endif //CM_DLL_H

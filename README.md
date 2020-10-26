@@ -986,6 +986,694 @@ void cm_arena_check (cmArena *arena);
  */
 cmAllocator cm_arena_allocator (cmArena *arena);
 ```
+## math.h
+```c
+#define CM_MATH_INFINITYF
+#define CM_MATH_NANF
+#define CM_MATH_PZEROF
+#define CM_MATH_NZEROF
+#define CM_MATH_INFINITY
+#define CM_MATH_NAN
+#define CM_MATH_PZERO
+#define CM_MATH_NZERO
+#define CM_MATH_INFINITYL
+#define CM_MATH_NANL
+#define CM_MATH_PZEROL
+#define CM_MATH_NZEROL
+
+#define CM_SIZEOF_CHAR
+#define CM_SIZEOF_BYTE
+#define CM_SIZEOF_INT
+#define CM_SIZEOF_INTP
+#define CM_SIZEOF_UINTP
+
+#define CM_SIZEOF_HALF
+#define CM_SIZEOF_LONG
+#define CM_SIZEOF_LONGLONG
+#define CM_SIZEOF_DOUBLE
+#define CM_SIZEOF_LONGDOUBLE
+#define CM_SIZEOF_DATETIME
+#define CM_SIZEOF_TIMEDELTA
+
+#define CM_CHAR_BIT
+
+#define CM_BYTE_FMT
+#define CM_UBYTE_FMT
+#define CM_SHORT_FMT
+#define CM_USHORT_FMT
+#define CM_INT_FMT
+#define CM_UINT_FMT
+#define CM_LONG_FMT
+#define CM_ULONG_FMT
+#define CM_HALF_FMT
+#define CM_FLOAT_FMT
+#define CM_DOUBLE_FMT
+#define CM_LONGLONG_FMT
+#define CM_ULONGLONG_FMT
+#define CM_LONGLONG_SUFFIX(x)
+#define CM_ULONGLONG_SUFFIX(x)
+
+#define cm_isnan(x)
+#define cm_isfinite(x)
+#define cm_isinf(x)
+
+#define CM_EXTRACT_WORDS(ix0,ix1,d)
+#define CM_GET_HIGH_WORD(i,d)
+#define CM_GET_LOW_WORD(i,d)
+#define CM_SET_HIGH_WORD(d,v)
+#define CM_SET_LOW_WORD(d,v)
+#define CM_INSERT_WORDS(d,ix0,ix1)
+
+#define CM_MATH_E
+#define CM_MATH_LOG2E
+#define CM_MATH_LOG10E
+#define CM_MATH_LOGE2
+#define CM_MATH_LOGE10
+#define CM_MATH_PI
+#define CM_MATH_PI_2 
+#define CM_MATH_PI_4
+#define CM_MATH_1_PI
+#define CM_MATH_2_PI
+#define CM_MATH_EULER
+#define CM_MATH_SQRT2
+#define CM_MATH_SQRT1_2
+#define CM_MATH_Ef
+#define CM_MATH_LOG2Ef
+#define CM_MATH_LOG10Ef
+#define CM_MATH_LOGE2f
+#define CM_MATH_LOGE10f
+#define CM_MATH_PIf
+#define CM_MATH_PI_2f
+#define CM_MATH_PI_4f
+#define CM_MATH_1_PIf
+#define CM_MATH_2_PIf
+#define CM_MATH_EULERf
+#define CM_MATH_SQRT2f
+#define CM_MATH_SQRT1_2f
+#define CM_MATH_El
+#define CM_MATH_LOG2El
+#define CM_MATH_LOG10El
+#define CM_MATH_LOGE2l
+#define CM_MATH_LOGE10l
+#define CM_MATH_PIl
+#define CM_MATH_PI_2l
+#define CM_MATH_PI_4l
+#define CM_MATH_1_PIl
+#define CM_MATH_2_PIl
+#define CM_MATH_EULERl
+#define CM_MATH_SQRT2l
+#define CM_MATH_SQRT1_2l
+
+#define cm_math_degrees
+#define cm_math_degreesf
+#define cm_math_degreesl
+#define cm_math_radians
+#define cm_math_radiansf
+#define cm_math_radiansl
+```
+- **Function**
+```c
+/*
+ * Integer functions.
+ */
+/*
+ */
+u32 cm_math_gcdu(u32 a, u32 b);
+/*
+ */
+u32 cm_math_lcmu(u32 a, u32 b);
+/*
+ */
+ul  cm_math_gcdul(ul a, ul b);
+/*
+ */
+ul  cm_math_lcmul(ul a, ul b);
+/*
+ */
+ull cm_math_gcdull(ull a, ull b);
+/*
+ */
+ull cm_math_lcmull(ull a, ull b);
+/*
+ */
+u32 cm_math_gcd(u32 a, u32 b);
+/*
+ */
+u32 cm_math_lcm(u32 a, u32 b);
+/*
+ */
+il  cm_math_gcdl(il a, il b);
+/*
+ */
+il  cm_math_lcml(il a, il b);
+/*
+ */
+ill cm_math_gcdll(ill a, ill b);
+/*
+ */
+ill cm_math_lcmll(ill a, ill b);
+/*
+ */
+ubyte cm_math_rshiftuhh(ubyte a, ubyte b);
+/*
+ */
+ubyte cm_math_lshiftuhh(ubyte a, ubyte b);
+/*
+ */
+u16 cm_math_rshiftuh(u16 a, u16 b);
+/*
+ */
+u16 cm_math_lshiftuh(u16 a, u16 b);
+/*
+ */
+u32 cm_math_rshiftu(u32 a, u32 b);
+/*
+ */
+u32 cm_math_lshiftu(u32 a, u32 b);
+/*
+ */
+ul  cm_math_rshiftul(ul a, ul b);
+/*
+ */
+ul  cm_math_lshiftul(ul a, ul b);
+/*
+ */
+ull cm_math_rshiftull(ull a, ull b);
+/*
+ */
+ull cm_math_lshiftull(ull a, ull b);
+/*
+ */
+ibyte cm_math_rshifthh(ibyte a, ibyte b);
+/*
+ */
+ibyte cm_math_lshifthh(ibyte a, ibyte b);
+/*
+ */
+i16 cm_math_rshifth(i16 a, i16 b);
+/*
+ */
+i16 cm_math_lshifth(i16 a, i16 b);
+/*
+ */
+i32 cm_math_rshift(i32 a, i32 b);
+/*
+ */
+i32 cm_math_lshift(i32 a, i32 b);
+/*
+ */
+il  cm_math_rshiftl(il a, il b);
+/*
+ */
+il  cm_math_lshiftl(il a, il b);
+/*
+ */
+ill cm_math_rshiftll(ill a, ill b);
+/*
+ */
+ill cm_math_lshiftll(ill a, ill b);
+
+/*
+ * float C99 math functions
+ */
+/*
+ */
+f32 cm_math_sinf(f32 x);
+/*
+ */
+f32 cm_math_cosf(f32 x);
+/*
+ */
+f32 cm_math_tanf(f32 x);
+/*
+ */
+f32 cm_math_sinhf(f32 x);
+/*
+ */
+f32 cm_math_coshf(f32 x);
+/*
+ */
+f32 cm_math_tanhf(f32 x);
+/*
+ */
+f32 cm_math_fabsf(f32 x);
+/*
+ */
+f32 cm_math_floorf(f32 x);
+/*
+ */
+f32 cm_math_ceilf(f32 x);
+/*
+ */
+f32 cm_math_rintf(f32 x);
+/*
+ */
+f32 cm_math_truncf(f32 x);
+/*
+ */
+f32 cm_math_sqrtf(f32 x);
+/*
+ */
+f32 cm_math_cbrtf(f32 x);
+/*
+ */
+f32 cm_math_log10f(f32 x);
+/*
+ */
+f32 cm_math_logf(f32 x);
+/*
+ */
+f32 cm_math_expf(f32 x);
+/*
+ */
+f32 cm_math_expm1f(f32 x);
+/*
+ */
+f32 cm_math_asinf(f32 x);
+/*
+ */
+f32 cm_math_acosf(f32 x);
+/*
+ */
+f32 cm_math_atanf(f32 x);
+/*
+ */
+f32 cm_math_asinhf(f32 x);
+/*
+ */
+f32 cm_math_acoshf(f32 x);
+/*
+ */
+f32 cm_math_atanhf(f32 x);
+/*
+ */
+f32 cm_math_log1pf(f32 x);
+/*
+ */
+f32 cm_math_exp2f(f32 x);
+/*
+ */
+f32 cm_math_log2f(f32 x);
+/*
+ */
+f32 cm_math_atan2f(f32 x, f32 y);
+/*
+ */
+f32 cm_math_hypotf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_powf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_fmodf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_modff(f32 x, f32* y);
+/*
+ */
+f32 cm_math_frexpf(f32 x, i32* y);
+/*
+ */
+f32 cm_math_ldexpf(f32 x, i32 y);
+/*
+ */
+f32 cm_math_copysignf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_nextafterf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_spacingf(f32 x);
+/*
+ * long double C99 math functions
+ */
+/*
+ */
+fld cm_math_sinl(fld x);
+/*
+ */
+fld cm_math_cosl(fld x);
+/*
+ */
+fld cm_math_tanl(fld x);
+/*
+ */
+fld cm_math_sinhl(fld x);
+/*
+ */
+fld cm_math_coshl(fld x);
+/*
+ */
+fld cm_math_tanhl(fld x);
+/*
+ */
+fld cm_math_fabsl(fld x);
+/*
+ */
+fld cm_math_floorl(fld x);
+/*
+ */
+fld cm_math_ceill(fld x);
+/*
+ */
+fld cm_math_rintl(fld x);
+/*
+ */
+fld cm_math_truncl(fld x);
+/*
+ */
+fld cm_math_sqrtl(fld x);
+/*
+ */
+fld cm_math_cbrtl(fld x);
+/*
+ */
+fld cm_math_log10l(fld x);
+/*
+ */
+fld cm_math_logl(fld x);
+/*
+ */
+fld cm_math_expl(fld x);
+/*
+ */
+fld cm_math_expm1l(fld x);
+/*
+ */
+fld cm_math_asinl(fld x);
+/*
+ */
+fld cm_math_acosl(fld x);
+/*
+ */
+fld cm_math_atanl(fld x);
+/*
+ */
+fld cm_math_asinhl(fld x);
+/*
+ */
+fld cm_math_acoshl(fld x);
+/*
+ */
+fld cm_math_atanhl(fld x);
+/*
+ */
+fld cm_math_log1pl(fld x);
+/*
+ */
+fld cm_math_exp2l(fld x);
+/*
+ */
+fld cm_math_log2l(fld x);
+/*
+ */
+fld cm_math_atan2l(fld x, fld y);
+/*
+ */
+fld cm_math_hypotl(fld x, fld y);
+/*
+ */
+fld cm_math_powl(fld x, fld y);
+/*
+ */
+fld cm_math_fmodl(fld x, fld y);
+/*
+ */
+fld cm_math_modfl(fld x, fld* y);
+/*
+ */
+fld cm_math_frexpl(fld x, int* y);
+/*
+ */
+fld cm_math_ldexpl(fld x, int y);
+/*
+ */
+fld cm_math_copysignl(fld x, fld y);
+/*
+ */
+fld cm_math_nextafterl(fld x, fld y);
+/*
+ */
+fld cm_math_spacingl(fld x);
+/*
+ * Non standard functions
+ */
+/*
+ */
+f64 cm_math_deg2rad(f64 x);
+/*
+ */
+f64 cm_math_rad2deg(f64 x);
+/*
+ */
+f64 cm_math_logaddexp(f64 x, f64 y);
+/*
+ */
+f64 cm_math_logaddexp2(f64 x, f64 y);
+/*
+ */
+f64 cm_math_divmod(f64 x, f64 y, f64 *modulus);
+/*
+ */
+f64 cm_math_heaviside(f64 x, f64 h0);
+/*
+ */
+f32 cm_math_deg2radf(f32 x);
+/*
+ */
+f32 cm_math_rad2degf(f32 x);
+/*
+ */
+f32 cm_math_logaddexpf(f32 x, f32 y);
+/*
+ */
+f32 cm_math_logaddexp2f(f32 x, f32 y);
+/*
+ */
+f32 cm_math_divmodf(f32 x, f32 y, f32 *modulus);
+/*
+ */
+f32 cm_math_heavisidef(f32 x, f32 h0);
+/*
+ */
+fld cm_math_deg2radl(fld x);
+/*
+ */
+fld cm_math_rad2degl(fld x);
+/*
+ */
+fld cm_math_logaddexpl(fld x, fld y);
+/*
+ */
+fld cm_math_logaddexp2l(fld x, fld y);
+/*
+ */
+fld cm_math_divmodl(fld x, fld y, fld *modulus);
+/*
+ */
+fld cm_math_heavisidel(fld x, fld h0);
+/*
+ * Complex declarations
+ */
+/*
+ */
+inline c64 cm_math_cpack(f64 x, f64 y);
+/*
+ */
+inline c32 cm_math_cpackf(f32 x, f32 y);
+/*
+ */
+inline cld cm_math_cpackl(fld x, fld y);
+/*
+ */
+inline f64 cm_math_creal(c64 z);
+/*
+ */
+inline f64 cm_math_cimag(c64 z);
+/*
+ */
+inline f32 cm_math_crealf(c32 z);
+/*
+ */
+inline f32 cm_math_cimagf(c32 z);
+/*
+ */
+inline fld cm_math_creall(cld z);
+/*
+ */
+inline fld cm_math_cimagl(cld z);
+/*
+ * Double precision complex functions
+ */
+/*
+ */
+f64 cm_math_cabs(c64 z);
+/*
+ */
+f64 cm_math_carg(c64 z);
+/*
+ */
+c64 cm_math_cexp(c64 z);
+/*
+ */
+c64 cm_math_clog(c64 z);
+/*
+ */
+c64 cm_math_cpow(c64 x, c64 y);
+/*
+ */
+c64 cm_math_csqrt(c64 z);
+/*
+ */
+c64 cm_math_ccos(c64 z);
+/*
+ */
+c64 cm_math_csin(c64 z);
+/*
+ */
+c64 cm_math_ctan(c64 z);
+/*
+ */
+c64 cm_math_ccosh(c64 z);
+/*
+ */
+c64 cm_math_csinh(c64 z);
+/*
+ */
+c64 cm_math_ctanh(c64 z);
+/*
+ */
+c64 cm_math_cacos(c64 z);
+/*
+ */
+c64 cm_math_casin(c64 z);
+/*
+ */
+c64 cm_math_catan(c64 z);
+/*
+ */
+c64 cm_math_cacosh(c64 z);
+/*
+ */
+c64 cm_math_casinh(c64 z);
+/*
+ */
+c64 cm_math_catanh(c64 z);
+/*
+ * Single precision complex functions
+ */
+/*
+ */
+f32 cm_math_cabsf(c32 z);
+/*
+ */
+f32 cm_math_cargf(c32 z);
+/*
+ */
+c32 cm_math_cexpf(c32 z);
+/*
+ */
+c32 cm_math_clogf(c32 z);
+/*
+ */
+c32 cm_math_cpowf(c32 x, c32 y);
+/*
+ */
+c32 cm_math_csqrtf(c32 z);
+/*
+ */
+c32 cm_math_ccosf(c32 z);
+/*
+ */
+c32 cm_math_csinf(c32 z);
+/*
+ */
+c32 cm_math_ctanf(c32 z);
+/*
+ */
+c32 cm_math_ccoshf(c32 z);
+/*
+ */
+c32 cm_math_csinhf(c32 z);
+/*
+ */
+c32 cm_math_ctanhf(c32 z);
+/*
+ */
+c32 cm_math_cacosf(c32 z);
+/*
+ */
+c32 cm_math_casinf(c32 z);
+/*
+ */
+c32 cm_math_catanf(c32 z);
+/*
+ */
+c32 cm_math_cacoshf(c32 z);
+/*
+ */
+c32 cm_math_casinhf(c32 z);
+/*
+ */
+c32 cm_math_catanhf(c32 z);
+/*
+ * Extended precision complex functions
+ */
+/*
+ */
+fld cm_math_cabsl(cld z);
+/*
+ */
+fld cm_math_cargl(cld z);
+/*
+ */
+cld cm_math_cexpl(cld z);
+/*
+ */
+cld cm_math_clogl(cld z);
+/*
+ */
+cld cm_math_cpowl(cld x, cld y);
+/*
+ */
+cld cm_math_csqrtl(cld z);
+/*
+ */
+cld cm_math_ccosl(cld z);
+/*
+ */
+cld cm_math_csinl(cld z);
+/*
+ */
+cld cm_math_ctanl(cld z);
+/*
+ */
+cld cm_math_ccoshl(cld z);
+/*
+ */
+cld cm_math_csinhl(cld z);
+/*
+ */
+cld cm_math_ctanhl(cld z);
+/*
+ */
+cld cm_math_cacosl(cld z);
+/*
+ */
+cld cm_math_casinl(cld z);
+/*
+ */
+cld cm_math_catanl(cld z);
+/*
+ */
+cld cm_math_cacoshl(cld z);
+/*
+ */
+cld cm_math_casinhl(cld z);
+/*
+ */
+cld cm_math_catanhl(cld z);
+```
 ## misc.h
 - **Function**
 ```c
@@ -1443,7 +2131,7 @@ isize cm_utf8_encode_rune (u8 buf[4], Rune r);
 #define cm_local_persist
 #define cm_unused(x)
 #define vprtcast(x)
-#define voidcast(x) // (void *)
+#define voidcast(x)
 #define CM_BIT(x)
 #define CM_MIN(a, b)
 #define CM_MAX(a, b)

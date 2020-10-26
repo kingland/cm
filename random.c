@@ -13,13 +13,12 @@
  *
  ********************************************************************************/
 
+#include "pragma.h"
 #include "random.h"
 #include "utils.h"
 #include "time.h"
 #include "atomics.h"
 #include "thread.h"
-
-CM_BEGIN_EXTERN
 
 cm_global 
 cmAtomic32 cm__random_shared_counter = {0};
@@ -185,6 +184,3 @@ cm_random_range_f64(cmRandom *r, f64 lower_inc, f64 higher_inc) {
 	f += lower_inc;
 	return f;
 }
-
-
-CM_END_EXTERN

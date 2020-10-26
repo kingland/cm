@@ -20,8 +20,6 @@
 
 #include "debug.h"
 
-CM_BEGIN_EXTERN
-
 #if defined(CM_SYS_WINDOWS)
 
 	cm_internal wchar_t *
@@ -792,5 +790,3 @@ cm_path_get_full_name(cmAllocator a, char const *path) {
 	return result;
 #endif
 }
-
-CM_END_EXTERN

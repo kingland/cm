@@ -12,15 +12,13 @@
  * Copyright (c) 2020 Sarayu Nhookeaw
  *
  ********************************************************************************/
-
+#include "pragma.h"
 #include "thread.h"
 #include "utils.h"
 #include "assert.h"
 #include "debug.h"
 #include "header.h"
 #include "memory.h"
-
-CM_BEGIN_EXTERN
 
 void 
 cm_thread_init(cmThread *t) {
@@ -243,6 +241,3 @@ cm_sync_reach_and_wait(cmSync *s) {
 		cm_mutex_unlock(&s->mutex);
 	}
 }
-
-CM_END_EXTERN
-

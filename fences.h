@@ -17,6 +17,9 @@
 #define CM_FENCES_H
 
 #include "dll.h"
+
+CM_BEGIN_EXTERN
+
 //
 // Fences
 //
@@ -24,5 +27,7 @@ CM_DEF void cm_yield_thread(void);
 CM_DEF void cm_mfence      (void);
 CM_DEF void cm_sfence      (void);
 CM_DEF void cm_lfence      (void);
+
+CM_END_EXTERN
 
 #endif //CM_FENCES_H

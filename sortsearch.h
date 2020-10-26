@@ -20,6 +20,8 @@
 #include "types.h"
 #include "utils.h"
 
+CM_BEGIN_EXTERN
+
 /////////////////////////////////////////////////////////////////////////////////
 //
 // Sort & Search
@@ -69,5 +71,7 @@ CM_DEF void cm_shuffle(void *base, isize count, isize size);
 
 #define cm_reverse_array(array, count) cm_reverse(array, count, cm_size_of(*(array)))
 CM_DEF void cm_reverse(void *base, isize count, isize size);
+
+CM_END_EXTERN
 
 #endif //CM_SORT_SEARCH_H

@@ -18,8 +18,6 @@
 #include "header.h"
 #include "debug.h"
 
-CM_BEGIN_EXTERN
-
 //
 // Time
 //
@@ -147,6 +145,3 @@ CM_BEGIN_EXTERN
 	}
 
 #endif
-
-
-CM_END_EXTERN

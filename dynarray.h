@@ -20,6 +20,8 @@
 #include "assert.h"
 #include "debug.h"
 
+CM_BEGIN_EXTERN
+
 ///////////////////////////////////////////////////////////////////////////////////
 //
 // Dynamic Array (POD Types)
@@ -30,9 +32,6 @@
 // cmArray(Type) works like cmString or cmBuffer where the actual type is just a pointer to the first
 // element.
 //
-///////////////////////////////////////////////////////////////////////////////////
-
-
 // Available Procedures for cmArray(Type)
 // cm_array_init
 // cm_array_free
@@ -45,6 +44,7 @@
 // cm_array_resize
 // cm_array_reserve
 //
+///////////////////////////////////////////////////////////////////////////////////
 
 #if 0 // Example
 void foo(void) {
@@ -173,5 +173,7 @@ CM_DEF void *cm__array_set_capacity(void *array, isize capacity, isize element_s
 	if (CM_ARRAY_HEADER(x)->capacity < (new_capacity)) \
 		cm_array_set_capacity(x, new_capacity); \
 } while (0)
+
+CM_END_EXTERN
 
 #endif //CM_DYNAMIC_ARRAY_H

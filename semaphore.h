@@ -20,6 +20,8 @@
 #include "arch.h"
 #include "types.h"
 
+CM_BEGIN_EXTERN
+
 #if defined(CM_SYS_WINDOWS)
 typedef struct cmSemaphore { void *win32_handle;}      cmSemaphore;
 #elif defined(CM_SYS_OSX)
@@ -33,5 +35,7 @@ CM_DEF void cm_semaphore_destroy(cmSemaphore *s);
 CM_DEF void cm_semaphore_post   (cmSemaphore *s, i32 count);
 CM_DEF void cm_semaphore_release(cmSemaphore *s);
 CM_DEF void cm_semaphore_wait   (cmSemaphore *s);
+
+CM_END_EXTERN
 
 #endif //CM_SEMAPHORE_H
